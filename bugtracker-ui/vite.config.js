@@ -1,7 +1,7 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 
-export default defineConfig((envConfig) => ({
+export default defineConfig((envConfig) => ({  
   plugins: [react()],
   server: {
     open: true,
@@ -21,10 +21,6 @@ export default defineConfig((envConfig) => ({
         find: /^@material-ui\/core$/,
         replacement: "@material-ui/core/es",
       },
-      {
-        find: /^@material-ui\/pickers$/,
-        replacement: "@material-ui/pickers/esm",
-      }
     ],
   },
   define: {
