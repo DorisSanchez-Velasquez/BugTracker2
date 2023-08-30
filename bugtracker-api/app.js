@@ -15,7 +15,6 @@ const reportRoutes = require('./routes/report')
 
 
 
-
 //Create Express Application
 const app = express()
 
@@ -55,6 +54,12 @@ app.get('/', async(req,res,next) => {
 app.use((req,res,next) => {
     return next(new NotFoundError())
 })
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 
 app.use((error, req, res, next) => {
     const status = error.status || 500
