@@ -2,7 +2,7 @@ import * as React from "react";
 import "./Dashboard.css";
 import { useProjectContext } from "../../contexts/project";
 import { useEffect, useState } from "react";
-import { DashboardProjectsTable } from "../Tables/dashboardProjectsTable";
+import { DashboardProjectsTable } from "../Tables/DashboardProjectsTable";
 import { DashboardTeamsTable } from "../Tables/DashboardTeamsTable";
 import apiClient from "../../services/apiClient";
 import { useTeamContext } from "../../contexts/team";
@@ -46,7 +46,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchAllTickets();
-    console.log("Rendered:", rendered);
     // if (rendered) {
     //   fetchDashboardStatistics();
     // } else {
@@ -55,7 +54,6 @@ export default function Dashboard() {
     // fetchDashboardStatistics();
 
     newFetchTeamsTableData(teams);
-    console.log("IN the dashboard useeffect");
   }, []);
 
   return (
@@ -71,7 +69,7 @@ export default function Dashboard() {
       )}
       <div className={projectModal || teamModal ? "blur" : "clear"}>
         <div className="ticket-statistics">
-          <h>Ticket Statistics</h>
+          <h1>Ticket Statistics</h1>
           {tickets.length > 0 ? (
             isLoading ? (
               <h1> Loading </h1>

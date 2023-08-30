@@ -32,7 +32,7 @@ export default function Navbar() {
     <div className="navbar">
       <div className="navbar-content">
         <div className={isOpen ? "navbar-left-open" : "navbar-left-closed"}>
-          <h>{header}</h>
+          <label>{header}</label>
         </div>
 
         <div className="navbar-right">

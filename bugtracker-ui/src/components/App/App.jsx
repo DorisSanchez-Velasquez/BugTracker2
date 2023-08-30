@@ -24,22 +24,26 @@ import { ProjectContextProvider } from "../../contexts/project";
 import { TeamContextProvider } from "../../contexts/team";
 import { TicketContextProvider } from "../../contexts/ticket";
 import { StatisticsContextProvider } from "../../contexts/statistics";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 export default function AppContainer() {
+  const defaultTheme = createTheme();
   return (
-    <AuthContextProvider>
-      <OpenContextProvider>
-        <StatisticsContextProvider>
-          <ProjectContextProvider>
-            <TeamContextProvider>
-              <TicketContextProvider>
-                <App />
-              </TicketContextProvider>
-            </TeamContextProvider>
-          </ProjectContextProvider>
-        </StatisticsContextProvider>
-      </OpenContextProvider>
-    </AuthContextProvider>
+    <ThemeProvider theme={defaultTheme}>
+      <AuthContextProvider>
+        <OpenContextProvider>
+          <StatisticsContextProvider>
+            <ProjectContextProvider>
+              <TeamContextProvider>
+                <TicketContextProvider>
+                  <App />
+                </TicketContextProvider>
+              </TeamContextProvider>
+            </ProjectContextProvider>
+          </StatisticsContextProvider>
+        </OpenContextProvider>
+      </AuthContextProvider>
+    </ThemeProvider>
   );
 }
 

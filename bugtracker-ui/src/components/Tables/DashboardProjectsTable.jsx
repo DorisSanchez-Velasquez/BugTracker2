@@ -26,28 +26,23 @@ export const DashboardProjectsTable = () => {
 
   return (
     <div className="table-container">
-      <MaterialTable
-        title="Your Projects"
-        columns={columns}
-        data={projects}
-        actions={[
-          {
-            icon: () => (
-              <button className="tableCreateButton">Create New Project</button>
-            ),
-            tooltip: "Create a new project",
-            onClick: () => setProjectModal(true),
-            isFreeAction: true,
-            position: "toolbar",
-          },
-        ]}
-        options={
-          [
-            // headerStyle: {}
-          ]
-        }
-        onRowClick={(rowData) => onRowClick(rowData)}
-      />
+        <MaterialTable
+          title="Your Projects"
+          columns={columns}
+          data={projects}
+          actions={[
+            {
+              icon: () => (
+                <button className="tableCreateButton">Create New Project</button>
+              ),
+              tooltip: "Create a new project",
+              onClick: () => setProjectModal(true),
+              isFreeAction: true,
+              position: "toolbar",
+            },
+          ]}
+          onRowClick={(rowData) => onRowClick(rowData)}
+        />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import "./TableProperties.css";
 import { useNavigate } from "react-router-dom";
 import { useTeamContext } from "../../contexts/team";
 
+
 const columns = [
   { title: "Id", field: "teamId", hidden: true },
   {
