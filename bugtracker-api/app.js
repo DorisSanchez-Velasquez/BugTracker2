@@ -14,11 +14,6 @@ const ticketRoutes = require('./routes/ticket')
 const reportRoutes = require('./routes/report')
 
 
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
- }
 
 //Create Express Application
 const app = express()
@@ -27,7 +22,7 @@ const app = express()
 
 
 //APP USE - Parse incoming request bodies
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny'))
 //APP USE - Security Middleware to authenticate user and create JWTs
@@ -60,11 +55,15 @@ app.use((req,res,next) => {
     return next(new NotFoundError())
 })
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.use((error, req, res, next) => {
     const status = error.status || 500
     const message = error.message
-    res.setHeader('Access-Control-Allow-Origin', 'https://bugtracker2.surge.sh')
-    res.setHeader('Access-Control-Allow-Credentials', true)
     return res.status((status)).json({
         error: {message, status}
     })
